@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamenBabelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ClientePlan">
+    <Key>
+      <PropertyRef Name="IdClientePlan" />
+    </Key>
+    <Property Name="IdClientePlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="IdPlan" Type="Int32" />
+    <NavigationProperty Name="Clientes" Relationship="Self.FK__ClientePl__IdCli__31EC6D26" FromRole="ClientePlan" ToRole="Clientes" />
+    <NavigationProperty Name="Planes" Relationship="Self.FK__ClientePl__IdPla__32E0915F" FromRole="ClientePlan" ToRole="Planes" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sexo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ClientePlan" Relationship="Self.FK__ClientePl__IdCli__31EC6D26" FromRole="Clientes" ToRole="ClientePlan" />
+  </EntityType>
+  <EntityType Name="Coberturas">
+    <Key>
+      <PropertyRef Name="IdCobertura" />
+    </Key>
+    <Property Name="IdCobertura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PlanCobertura" Relationship="Self.FK__PlanCober__IdCob__36B12243" FromRole="Coberturas" ToRole="PlanCobertura" />
+  </EntityType>
+  <EntityType Name="PlanCobertura">
+    <Key>
+      <PropertyRef Name="IdPlanCobertura" />
+    </Key>
+    <Property Name="IdPlanCobertura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPlan" Type="Int32" />
+    <Property Name="IdCobertura" Type="Int32" />
+    <NavigationProperty Name="Coberturas" Relationship="Self.FK__PlanCober__IdCob__36B12243" FromRole="PlanCobertura" ToRole="Coberturas" />
+    <NavigationProperty Name="Planes" Relationship="Self.FK__PlanCober__IdPla__35BCFE0A" FromRole="PlanCobertura" ToRole="Planes" />
+  </EntityType>
+  <EntityType Name="Planes">
+    <Key>
+      <PropertyRef Name="IdPlan" />
+    </Key>
+    <Property Name="IdPlan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ClientePlan" Relationship="Self.FK__ClientePl__IdPla__32E0915F" FromRole="Planes" ToRole="ClientePlan" />
+    <NavigationProperty Name="PlanCobertura" Relationship="Self.FK__PlanCober__IdPla__35BCFE0A" FromRole="Planes" ToRole="PlanCobertura" />
+  </EntityType>
+  <Association Name="FK__ClientePl__IdCli__31EC6D26">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="ClientePlan" Type="Self.ClientePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="ClientePlan">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClientePl__IdPla__32E0915F">
+    <End Role="Planes" Type="Self.Planes" Multiplicity="0..1" />
+    <End Role="ClientePlan" Type="Self.ClientePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planes">
+        <PropertyRef Name="IdPlan" />
+      </Principal>
+      <Dependent Role="ClientePlan">
+        <PropertyRef Name="IdPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PlanCober__IdCob__36B12243">
+    <End Role="Coberturas" Type="Self.Coberturas" Multiplicity="0..1" />
+    <End Role="PlanCobertura" Type="Self.PlanCobertura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coberturas">
+        <PropertyRef Name="IdCobertura" />
+      </Principal>
+      <Dependent Role="PlanCobertura">
+        <PropertyRef Name="IdCobertura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PlanCober__IdPla__35BCFE0A">
+    <End Role="Planes" Type="Self.Planes" Multiplicity="0..1" />
+    <End Role="PlanCobertura" Type="Self.PlanCobertura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planes">
+        <PropertyRef Name="IdPlan" />
+      </Principal>
+      <Dependent Role="PlanCobertura">
+        <PropertyRef Name="IdPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExamenBabelEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ClientePlan" EntityType="Self.ClientePlan" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+    <EntitySet Name="Coberturas" EntityType="Self.Coberturas" />
+    <EntitySet Name="PlanCobertura" EntityType="Self.PlanCobertura" />
+    <EntitySet Name="Planes" EntityType="Self.Planes" />
+    <AssociationSet Name="FK__ClientePl__IdCli__31EC6D26" Association="Self.FK__ClientePl__IdCli__31EC6D26">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="ClientePlan" EntitySet="ClientePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClientePl__IdPla__32E0915F" Association="Self.FK__ClientePl__IdPla__32E0915F">
+      <End Role="Planes" EntitySet="Planes" />
+      <End Role="ClientePlan" EntitySet="ClientePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PlanCober__IdCob__36B12243" Association="Self.FK__PlanCober__IdCob__36B12243">
+      <End Role="Coberturas" EntitySet="Coberturas" />
+      <End Role="PlanCobertura" EntitySet="PlanCobertura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PlanCober__IdPla__35BCFE0A" Association="Self.FK__PlanCober__IdPla__35BCFE0A">
+      <End Role="Planes" EntitySet="Planes" />
+      <End Role="PlanCobertura" EntitySet="PlanCobertura" />
+    </AssociationSet>
+    <FunctionImport Name="ClienteAdd">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+      <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+      <Parameter Name="Sexo" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ClienteDelete">
+      <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ClienteUpdate">
+      <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+      <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+      <Parameter Name="Sexo" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CoberturaAdd">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CoberturaDelete">
+      <Parameter Name="IdCobertura" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CoberturaUpdate">
+      <Parameter Name="IdCobertura" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PlanAdd">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PlanDelete">
+      <Parameter Name="IdPlan" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PlanUpdate">
+      <Parameter Name="IdPlan" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamenBabelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ClientePlan">
+    <Key>
+      <PropertyRef Name="IdClientePlan" />
+    </Key>
+    <Property Name="IdClientePlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCliente" Type="int" />
+    <Property Name="IdPlan" Type="int" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sexo" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Coberturas">
+    <Key>
+      <PropertyRef Name="IdCobertura" />
+    </Key>
+    <Property Name="IdCobertura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlanCobertura">
+    <Key>
+      <PropertyRef Name="IdPlanCobertura" />
+    </Key>
+    <Property Name="IdPlanCobertura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPlan" Type="int" />
+    <Property Name="IdCobertura" Type="int" />
+  </EntityType>
+  <EntityType Name="Planes">
+    <Key>
+      <PropertyRef Name="IdPlan" />
+    </Key>
+    <Property Name="IdPlan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="FechaModificacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ClientePl__IdCli__2A4B4B5E">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="ClientePlan" Type="Self.ClientePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="ClientePlan">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClientePl__IdPla__2B3F6F97">
+    <End Role="Planes" Type="Self.Planes" Multiplicity="0..1" />
+    <End Role="ClientePlan" Type="Self.ClientePlan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planes">
+        <PropertyRef Name="IdPlan" />
+      </Principal>
+      <Dependent Role="ClientePlan">
+        <PropertyRef Name="IdPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PlanCober__IdCob__2F10007B">
+    <End Role="Coberturas" Type="Self.Coberturas" Multiplicity="0..1" />
+    <End Role="PlanCobertura" Type="Self.PlanCobertura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coberturas">
+        <PropertyRef Name="IdCobertura" />
+      </Principal>
+      <Dependent Role="PlanCobertura">
+        <PropertyRef Name="IdCobertura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PlanCober__IdPla__2E1BDC42">
+    <End Role="Planes" Type="Self.Planes" Multiplicity="0..1" />
+    <End Role="PlanCobertura" Type="Self.PlanCobertura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Planes">
+        <PropertyRef Name="IdPlan" />
+      </Principal>
+      <Dependent Role="PlanCobertura">
+        <PropertyRef Name="IdPlan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ClienteAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+    <Parameter Name="Sexo" Type="char" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ClienteDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ClienteUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCliente" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
+    <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
+    <Parameter Name="Sexo" Type="char" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CoberturaAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CoberturaDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCobertura" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CoberturaUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCobertura" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PlanAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="PlanDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPlan" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PlanUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdPlan" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ExamenBabelModelStoreContainer">
+    <EntitySet Name="ClientePlan" EntityType="Self.ClientePlan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Coberturas" EntityType="Self.Coberturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlanCobertura" EntityType="Self.PlanCobertura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Planes" EntityType="Self.Planes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ClientePl__IdCli__2A4B4B5E" Association="Self.FK__ClientePl__IdCli__2A4B4B5E">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="ClientePlan" EntitySet="ClientePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClientePl__IdPla__2B3F6F97" Association="Self.FK__ClientePl__IdPla__2B3F6F97">
+      <End Role="Planes" EntitySet="Planes" />
+      <End Role="ClientePlan" EntitySet="ClientePlan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PlanCober__IdCob__2F10007B" Association="Self.FK__PlanCober__IdCob__2F10007B">
+      <End Role="Coberturas" EntitySet="Coberturas" />
+      <End Role="PlanCobertura" EntitySet="PlanCobertura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PlanCober__IdPla__2E1BDC42" Association="Self.FK__PlanCober__IdPla__2E1BDC42">
+      <End Role="Planes" EntitySet="Planes" />
+      <End Role="PlanCobertura" EntitySet="PlanCobertura" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

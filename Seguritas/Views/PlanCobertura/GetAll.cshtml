@@ -1,0 +1,55 @@
+﻿@model BL.PlanM
+
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Coberturas de planes</h2>
+            <p>Seleciona un plan para agregarle o quitar cobertura</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover ">
+                <thead>
+                    <tr>
+                        <th class="text-center">Ver coberturas</th>
+                        <th class="hidden">Id</th>
+                        <th>Plan</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (BL.PlanM plan in Model.Planes)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <a class="btn btn-info glyphicon glyphicon-eye-open" href="@Url.Action("CoberturasAsignadas","PlanCobertura", new {idPlan = plan.IdPlan})"></a>
+                            </td>
+                            <td class="hidden">@plan.IdPlan</td>
+                            <td>@plan.Nombre</td>
+                            <td>@plan.Descripcion</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+

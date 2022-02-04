@@ -1,0 +1,93 @@
+﻿@model BL.ClientePlanM
+
+@{
+    ViewBag.Title = "PlanesAsignados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .lblData {
+        font-weight: 500;
+    }
+</style>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Planes asignados</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <div class="form-inline">
+
+                    @Html.Label("Cliente: ")
+
+                    @Html.Label(Model.Cliente.Nombre, htmlAttributes: new { @class = "lblData" })
+
+                    @Html.Label(Model.Cliente.ApellidoPaterno, htmlAttributes: new { @class = "lblData" })
+
+                    @Html.Label(Model.Cliente.ApellidoMaterno, htmlAttributes: new { @class = "lblData" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10">
+            <a class="btn btn-primary" href="@Url.Action("PlanesNoAsignados", "ClientePlan", new { idCliente = Model.Cliente.IdCliente })">+ Agregar planes</a>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover ">
+                <thead>
+                    <tr>
+                        <th class="text-center">Eliminar</th>
+                        <th class="hidden">Id</th>
+                        <th>Plan</th>
+                        <th>Descripción</th>
+                        <th>Fecha de modificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (BL.ClientePlanM clientePlan in Model.ClientePlanes)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <a class="btn btn-danger glyphicon glyphicon-remove" href="@Url.Action("PlanDeleteByIdClientePlan", "ClientePlan", new { idClientePlan = clientePlan.IdClientePlan, idCliente = Model.Cliente.IdCliente })"></a>
+                            </td>
+                            <td class="hidden">@clientePlan.IdClientePlan</td>
+                            <td>@clientePlan.Plan.Nombre</td>
+                            <td>@clientePlan.Plan.Descripcion</td>
+                            <td class="text-center">@clientePlan.Plan.FechaModificacion</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("Regresar", "GetAll", "ClientePlan", htmlAttributes: new { @class = "btn btn-danger" })
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,94 @@
+﻿@model BL.PlanCoberturaM
+
+@{
+    ViewBag.Title = "CoberturasNoAsignadas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .lblData {
+        font-weight: 500;
+    }
+</style>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Coberturas disponibles</h2>
+        </div>
+    </div>
+    <br />
+
+    @using (Html.BeginForm("PlanCoberturaAdd", "PlanCobertura", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="form-inline">
+
+                        @Html.Label("Plan: ")
+
+                        @Html.Label("IdPlan: ", htmlAttributes: new { @class = "hidden" })
+                        @Html.TextBoxFor(model => model.Plan.IdPlan, new { @class = "hidden" })
+                        @*@Html.Label(Model.Alumno.IdAlumno.ToString(), htmlAttributes: new { @class = "lblData hidden" })*@
+
+
+                        @Html.Label(Model.Plan.Nombre, htmlAttributes: new { @class = "lblData" })
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Seleccionar</th>
+                            <th class="hidden">Id</th>
+                            <th>Plan</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (BL.PlanCoberturaM planCobertura in Model.PlanCoberturas)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <input type="checkbox" name="PlanCoberturas" value="@planCobertura.Cobertura.IdCobertura" />
+                                </td>
+                                <td>@planCobertura.Cobertura.Nombre</td>
+                                <td>@planCobertura.Cobertura.Descripcion</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row text-center">
+            <div class="col-md-12">
+                @Html.ActionLink("Regresar", "CoberturasAsignadas", "PlanCobertura", new { idPlan = Model.Plan.IdPlan }, htmlAttributes: new { @class = "btn btn-danger" })
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </div>
+    }
+
+
+</div>
+
+

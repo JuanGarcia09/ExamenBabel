@@ -1,0 +1,92 @@
+﻿@model BL.PlanCoberturaM
+
+@{
+    ViewBag.Title = "CoberturasAsignadas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .lblData {
+        font-weight: 500;
+    }
+</style>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Coberturas asignadas</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <div class="form-inline">
+
+                    @Html.Label("Plan: ")
+
+                    @Html.Label(Model.Plan.Nombre, htmlAttributes: new { @class = "lblData" })
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10">
+            <a class="btn btn-primary" href="@Url.Action("CoberturasNoAsignadas", "PlanCobertura", new { idPlan = Model.Plan.IdPlan })">+ Agregar coberturas</a>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover ">
+                <thead>
+                    <tr>
+                        <th class="text-center">Eliminar</th>
+                        <th class="hidden">Id</th>
+                        <th>Cobertura</th>
+                        <th>Descripción</th>
+                        <th>Fecha de Modificación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (BL.PlanCoberturaM planCobertura in Model.PlanCoberturas)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <a class="btn btn-danger glyphicon glyphicon-remove" href="@Url.Action("CoberturaDeleteByIdPlanCobertura", "PlanCobertura", new { idPlanCobertura = planCobertura.IdPlanCobertura, idPlan = Model.Plan.IdPlan })"></a>
+                            </td>
+                            <td class="hidden">@planCobertura.IdPlanCobertura</td>
+                            <td>@planCobertura.Cobertura.Nombre</td>
+                            <td>@planCobertura.Cobertura.Descripcion</td>
+                            <td class="text-center">@planCobertura.Cobertura.FechaModificacion</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.ActionLink("Regresar", "GetAll", "PlanCobertura", htmlAttributes: new { @class = "btn btn-danger" })
+        </div>
+    </div>
+
+</div>
+
+
+

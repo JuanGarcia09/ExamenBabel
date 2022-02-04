@@ -1,0 +1,53 @@
+﻿@model BL.ClienteM
+
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Planes de clientes</h2>
+            <p>Seleciona un cliente para agregarle o quitarle planes</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover ">
+                <thead>
+                    <tr>
+                        <th class="text-center">Ver planes</th>
+                        <th class="hidden">Id</th>
+                        <th>Cliente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (BL.ClienteM cliente in Model.Clientes)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <a class="btn btn-info glyphicon glyphicon-eye-open" href="@Url.Action("PlanesAsignados","ClientePlan", new {idCliente = cliente.IdCliente})"></a>
+                            </td>
+                            <td class="hide">@cliente.IdCliente</td>
+                            <td>@cliente.Nombre @cliente.ApellidoPaterno @cliente.ApellidoMaterno</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+

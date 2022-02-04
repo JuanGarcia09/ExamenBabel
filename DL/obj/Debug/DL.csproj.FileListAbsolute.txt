@@ -1,0 +1,44 @@
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\bin\Debug\DL.dll.config
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\bin\Debug\DL.dll
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\bin\Debug\DL.pdb
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\bin\Debug\EntityFramework.dll
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\bin\Debug\EntityFramework.xml
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\obj\Debug\DL.csprojResolveAssemblyReference.cache
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\obj\Debug\DL.dll
+C:\Users\digis\Documents\JUAN ANTONIO GARCIA CANTU\Examenes\Babel\Seguritas\DL\obj\Debug\DL.pdb
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\bin\Debug\DL.dll.config
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\bin\Debug\DL.dll
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\bin\Debug\DL.pdb
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\bin\Debug\EntityFramework.dll
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\bin\Debug\EntityFramework.xml
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\obj\Debug\DL.csproj.AssemblyReference.cache
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\obj\Debug\DL.csproj.CoreCompileInputs.cache
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\obj\Debug\DL.csproj.CopyComplete
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\obj\Debug\DL.dll
+C:\Users\luisl\Source\Repos\JuanGarcia09\CRUD\DL\obj\Debug\DL.pdb
+C:\Users\digis\Desktop\CRUD\DL\bin\Debug\DL.dll.config
+C:\Users\digis\Desktop\CRUD\DL\bin\Debug\DL.dll
+C:\Users\digis\Desktop\CRUD\DL\bin\Debug\DL.pdb
+C:\Users\digis\Desktop\CRUD\DL\bin\Debug\EntityFramework.dll
+C:\Users\digis\Desktop\CRUD\DL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\digis\Desktop\CRUD\DL\bin\Debug\EntityFramework.xml
+C:\Users\digis\Desktop\CRUD\DL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\digis\Desktop\CRUD\DL\obj\Debug\DL.csprojResolveAssemblyReference.cache
+C:\Users\digis\Desktop\CRUD\DL\obj\Debug\DL.dll
+C:\Users\digis\Desktop\CRUD\DL\obj\Debug\DL.pdb
+C:\Users\luisl\Source\Repos\CRUD\DL\bin\Debug\DL.dll.config
+C:\Users\luisl\Source\Repos\CRUD\DL\bin\Debug\DL.dll
+C:\Users\luisl\Source\Repos\CRUD\DL\bin\Debug\DL.pdb
+C:\Users\luisl\Source\Repos\CRUD\DL\bin\Debug\EntityFramework.dll
+C:\Users\luisl\Source\Repos\CRUD\DL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\luisl\Source\Repos\CRUD\DL\bin\Debug\EntityFramework.xml
+C:\Users\luisl\Source\Repos\CRUD\DL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\luisl\Source\Repos\CRUD\DL\obj\Debug\DL.csproj.AssemblyReference.cache
+C:\Users\luisl\Source\Repos\CRUD\DL\obj\Debug\DL.csproj.CoreCompileInputs.cache
+C:\Users\luisl\Source\Repos\CRUD\DL\obj\Debug\DL.csproj.CopyComplete
+C:\Users\luisl\Source\Repos\CRUD\DL\obj\Debug\DL.dll
+C:\Users\luisl\Source\Repos\CRUD\DL\obj\Debug\DL.pdb

@@ -1,0 +1,96 @@
+﻿@model BL.ClientePlanM
+
+@{
+    ViewBag.Title = "PlanesNoAsignados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .lblData {
+        font-weight: 500;
+    }
+</style>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Planes disponibles</h2>
+        </div>
+    </div>
+    <br />
+
+    @using (Html.BeginForm("ClientesPlanAdd", "ClientePlan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="form-inline">
+
+                        @Html.Label("Cliente: ")
+
+                        @Html.Label("IdCliente: ", htmlAttributes: new { @class = "hidden" })
+                        @Html.TextBoxFor(model => model.Cliente.IdCliente, new { @class = "hidden" })
+                        @*@Html.Label(Model.Alumno.IdAlumno.ToString(), htmlAttributes: new { @class = "lblData hidden" })*@
+
+
+                        @Html.Label(Model.Cliente.Nombre, htmlAttributes: new { @class = "lblData" })
+
+                        @Html.Label(Model.Cliente.ApellidoPaterno, htmlAttributes: new { @class = "lblData" })
+
+                        @Html.Label(Model.Cliente.ApellidoMaterno, htmlAttributes: new { @class = "lblData" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover ">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Seleccionar</th>
+                            <th class="hidden">Id</th>
+                            <th>Plan</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (BL.ClientePlanM clientePlan in Model.ClientePlanes)
+                        {
+                            <tr>
+                                <td class="text-center">
+                                    <input type="checkbox" name="ClientePlanes" value="@clientePlan.Plan.IdPlan" />
+                                </td>
+                                <td>@clientePlan.Plan.Nombre</td>
+                                <td>@clientePlan.Plan.Descripcion</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row text-center">
+            <div class="col-md-12">
+                @Html.ActionLink("Regresar", "PlanesAsignados", "ClientePlan", new { idCliente = Model.Cliente.IdCliente}, htmlAttributes: new { @class = "btn btn-danger" })
+                <input type="submit" value="Guardar" class="btn btn-success" />
+            </div>
+        </div>
+    }
+
+
+</div>
+

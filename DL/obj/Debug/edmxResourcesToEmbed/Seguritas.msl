@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExamenBabelModelStoreContainer" CdmEntityContainer="ExamenBabelEntities3">
+    <EntitySetMapping Name="ClientePlan">
+      <EntityTypeMapping TypeName="ExamenBabelModel.ClientePlan">
+        <MappingFragment StoreEntitySet="ClientePlan">
+          <ScalarProperty Name="IdClientePlan" ColumnName="IdClientePlan" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="ExamenBabelModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coberturas">
+      <EntityTypeMapping TypeName="ExamenBabelModel.Coberturas">
+        <MappingFragment StoreEntitySet="Coberturas">
+          <ScalarProperty Name="IdCobertura" ColumnName="IdCobertura" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanCobertura">
+      <EntityTypeMapping TypeName="ExamenBabelModel.PlanCobertura">
+        <MappingFragment StoreEntitySet="PlanCobertura">
+          <ScalarProperty Name="IdPlanCobertura" ColumnName="IdPlanCobertura" />
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="IdCobertura" ColumnName="IdCobertura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Planes">
+      <EntityTypeMapping TypeName="ExamenBabelModel.Planes">
+        <MappingFragment StoreEntitySet="Planes">
+          <ScalarProperty Name="IdPlan" ColumnName="IdPlan" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ClienteAdd" FunctionName="ExamenBabelModel.Store.ClienteAdd" />
+    <FunctionImportMapping FunctionImportName="ClienteDelete" FunctionName="ExamenBabelModel.Store.ClienteDelete" />
+    <FunctionImportMapping FunctionImportName="ClienteUpdate" FunctionName="ExamenBabelModel.Store.ClienteUpdate" />
+    <FunctionImportMapping FunctionImportName="CoberturaAdd" FunctionName="ExamenBabelModel.Store.CoberturaAdd" />
+    <FunctionImportMapping FunctionImportName="CoberturaDelete" FunctionName="ExamenBabelModel.Store.CoberturaDelete" />
+    <FunctionImportMapping FunctionImportName="CoberturaUpdate" FunctionName="ExamenBabelModel.Store.CoberturaUpdate" />
+    <FunctionImportMapping FunctionImportName="PlanAdd" FunctionName="ExamenBabelModel.Store.PlanAdd" />
+    <FunctionImportMapping FunctionImportName="PlanDelete" FunctionName="ExamenBabelModel.Store.PlanDelete" />
+    <FunctionImportMapping FunctionImportName="PlanUpdate" FunctionName="ExamenBabelModel.Store.PlanUpdate" />
+  </EntityContainerMapping>
+</Mapping>

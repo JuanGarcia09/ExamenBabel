@@ -1,0 +1,169 @@
+﻿@model BL.ClienteM
+
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="~/Scripts/cliente/clienteCRUD.js"></script>
+<script type="text/javascript" src="~/Scripts/validaciones/validaciones.js"></script>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Clientes</h2>
+            <p>Agrega, modifica o elimina un cliente.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10 text-right">
+            @*@Html.ActionLink("+", "Form", "Empleado", new { @class = "btn btn-primary" })*@
+            <a href="#mi_modal" class="btn btn-primary" data-toggle="modal" onclick="limpiar();"><span class="glyphicon glyphicon-plus"></span> Agregar cliente</a>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">Editar</th>
+                        <th class="hidden">Id</th>                        
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Sexo</th>
+                        <th class="text-center">Teléfono</th>
+                        <th class="text-center">Email</th>                        
+                        <th class="text-center">Fecha de Modificación</th>                        
+                        <th class="text-center">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (BL.ClienteM cliente in Model.Clientes)
+                    {
+                        <tr>
+                            <td class="text-center">                                                               
+                                <a href='#mi_modal' class='btn btn-warning glyphicon glyphicon-edit' data-toggle='modal' onclick='ClienteGetById(@cliente.IdCliente)'></a>
+                            </td>                                                       
+                            <td class="hidden">@cliente.IdCliente</td> 
+                            <td class="text-center">@cliente.Nombre @cliente.ApellidoPaterno @cliente.ApellidoMaterno</td>
+                            <td class="text-center">@cliente.Sexo</td>
+                            <td class="text-center">@cliente.Telefono</td>
+                            <td class="text-center">@cliente.Email</td>                            
+                            <td class="text-center">@cliente.FechaModificacion</td>                            
+                            <td class="text-center">
+                                <a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Clientes", new { idCliente = cliente.IdCliente})"></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="mi_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Cliente</h4>
+            </div>
+            <form id="formulario">
+                <div class="modal-body">
+                    <div class="row" style="padding:15px">
+
+                        <div class="row">
+                            <div class="col-md-6" id="colIdCliente">
+                                <div class="form-group">
+                                    <label for="idCliente">Id cliente</label>
+                                    <input id="idCliente" type="text" name="txtIdCliente" value=" " class="form-control"  readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre</label>
+                                    <input id="nombre" type="text" onkeypress="return validarNombre(this)" name=" txtnombre" value=" " class="form-control" style="max-width:100%;" />
+                                    <p id="lblErrorNombre" style="display: none; color:red">Solo se aceptan letras</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="apellidoPaterno">Apellido paterno</label>
+                                    <input id="apellidoPaterno" type="text" onkeypress="return validarApellidoPaterno(this)"  name="txtApellidoPaterno" value=" " class="form-control" />
+                                    <p id="lblErrorApellidoPaterno" style="display: none; color: red">Solo se aceptan letras</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="apellidoMaterno">Apellido materno</label>
+                                    <input id="apellidoMaterno" type="text" onkeypress="return validarApellidoMaterno(this)" name="txtApellidoMaterno" value=" " class="form-control" />
+                                    <p id="lblErrorApellidoMaterno" style="display: none; color: red">Solo se aceptan letras</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Sexo</label>
+                                    <label for="hombre">H</label>
+                                    <input type="radio" name="sexo" id="hombre" value="H" checked="">
+                                    <label for="Mujer">M</label>
+                                    <input type="radio" name="sexo" id="Mujer" value="M">
+                                    <p id="lblErrorSexo" style="display: none; color: red">Debes seleccionar el sexo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono</label>
+                                    <input id="telefono" type="text" name="txtTelefono" onkeypress="return validarTelefono(this)" value=" " class="form-control" />
+                                    <p id="lblErrorTelefono" style="display: none; color: red">Solo se aceptan números</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="text" name="txtEmail" onblur="return validarEmail(this)" value=" " class="form-control" />
+                                    <p id="lblErrorEmail" style="display: none; color: red">Error en el formato de correo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="fechaModificacion" for="fechaModificacion">Fecha de modificación</label>
+                                    <input id="fechaModificacion" type="text" name="txtFechaModificacion" value=" " class="form-control fechaModificacion" readonly />
+                                </div>
+                            </div>                            
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnEnviar" class="btn btn-success" onclick="Form(this)">Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+        </form>
+        </div>
+    </div>
+</div>
